@@ -1,3 +1,5 @@
+// app/(app)/_layout.tsx
+// Tab bar for all authenticated screens — Expo Router as primary, no manual React Navigation
 import { Tabs } from 'expo-router';
 import { Text } from 'react-native';
 import { Colors } from '../../src/utils/theme';
@@ -6,7 +8,7 @@ function TabIcon({ emoji }: { emoji: string }) {
   return <Text style={{ fontSize: 20 }}>{emoji}</Text>;
 }
 
-export default function TabLayout() {
+export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -16,30 +18,22 @@ export default function TabLayout() {
           backgroundColor: Colors.surface,
           borderTopColor: Colors.border,
           borderTopWidth: 1,
-          height: 60,
+          height: 62,
           paddingBottom: 8,
         },
         tabBarLabelStyle: { fontSize: 10, fontWeight: '600' },
         headerStyle: { backgroundColor: Colors.background },
         headerTintColor: Colors.textPrimary,
-        headerTitleStyle: { fontWeight: '700' },
+        headerTitleStyle: { fontWeight: '700', fontSize: 18 },
         headerShadowVisible: false,
       }}
     >
       <Tabs.Screen
-        name="home"
-        options={{
-          title: 'Home',
-          tabBarLabel: 'Home',
-          tabBarIcon: () => <TabIcon emoji="🏠" />,
-        }}
-      />
-      <Tabs.Screen
         name="index"
         options={{
           title: 'Dashboard',
-          tabBarLabel: 'Dashboard',
-          tabBarIcon: () => <TabIcon emoji="📊" />,
+          tabBarLabel: 'Home',
+          tabBarIcon: () => <TabIcon emoji="🏠" />,
         }}
       />
       <Tabs.Screen
@@ -59,14 +53,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="roles"
+        name="profile"
         options={{
-          title: 'Team',
-          tabBarLabel: 'Team',
-          tabBarIcon: () => <TabIcon emoji="👥" />,
+          title: 'Profile',
+          tabBarLabel: 'Profile',
+          tabBarIcon: () => <TabIcon emoji="👤" />,
         }}
       />
     </Tabs>
   );
 }
-
